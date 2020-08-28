@@ -44,3 +44,4 @@ echo "openssl x509 -req -passin pass:$PASSWORD -in \$CERTIFICATE_NAME.csr -CA ${
 chmod +x ${TARGET_DIR}/generate_certificate.sh
 
 # Run the certificate generation script at once.
+cd $TARGET_DIR && $SCRIPT

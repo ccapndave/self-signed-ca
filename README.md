@@ -1,26 +1,46 @@
-# Self-signed-ca
-
-## About
+# About
 
 This utility generates certificates who want to test their local sites using `https` (very useful for web development where browsers disable various features under `http`).
 
-## Disclaimer
+# Disclaimer
 
-## Instructions
+# Instructions
 
-### 1. Generate a Certificate Authority and certificate
+## 1. Generate a Certificate Authority and certificate
 
-To get started, run `generate-ca`.  You will be prompted for the name of your organisation.  The script will create a folder in your home directory named `.self-signed-ca/<organsation_name>`.  You will then be prompted for the name of your certificate, and what domain names/ip addresses it will be valid for.
+To get started, run `generate-ca`.  You will be prompted for the name of your organisation.  The script will create a folder in your home directory named `.self-signed-ca/<organisation_name>`.  You will then be prompted for the name of your certificate, and what domain names/ip addresses it will be valid for.
 
-### 2. Install the Root Certificate
+## 2. Install the Root Certificate
 
-In order to get your machine/device to trust certificates created by this tool, you need to install the root certificate at `.self-signed-ca/<organsation_name>/<organsation_name>CA.pem`.  You can either install the certificate at a system or browser level.  Check Google for details on how to install root certificates on various devices and browsers.
+In order to get your machine/device to trust certificates created by this tool, you need to install the generated root certificate in your browser/device.
 
-### 3. Create more certificates (optional)
+### Chrome & Safari (MacOS)
 
-You can create new certificates, or update existing ones at any time by running the script at `.self-signed-ca/<organsation_name>/generate_certificate.sh`.
+* Double-click on the `.self-signed-ca/<organisation_name>/ca.crt` file in Finder
+* Enter your password
+* Double-click on the newly installed certificate (it will have a red cross next to it), open the `Trust` section and set *When using this certificate* to `Always trust`
+* Close the window and enter your password again
+
+### Firefox (MacOS)
+
+* `Preferences > Privacy & Security > View Certificates...`
+* Click `Import...`
+* Select the `Authorities` tab
+* Open `.self-signed-ca/<organisation_name>/ca.crt`
+
+### Chrome (Android)
+
+* Download and run the `.self-signed-ca/<organisation_name>/ca.crt` file
+
+## Firefox (Android)
+
+This is currently impossible on modern versions of Firefox (https://github.com/mozilla-mobile/fenix/issues/2286).
+
+## 3. Create more certificates (optional)
+
+You can create new certificates or update existing ones at any time by running the script at `.self-signed-ca/<organisation_name>/generate_certificate.sh`.
 
 
-# References
+# Thanks
 
-Shout out to https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development for the excellent article!
+Shout out to https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development for the excellent article that put me on the right track.

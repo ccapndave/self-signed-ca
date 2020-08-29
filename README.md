@@ -30,11 +30,11 @@ In order to get your machine/device to trust certificates created by this tool, 
 
 ### Chrome (Android)
 
-* Download and run the `.self-signed-ca/<organisation_name>/ca.crt` file
+* Run the `.self-signed-ca/<organisation_name>/server_ca.sh` script, and then on your Android device navigate to `http://<computer_ip>:3000`.  Chrome will download and install the CA.
 
 ## Firefox (Android)
 
-This is currently impossible on modern versions of Firefox (https://github.com/mozilla-mobile/fenix/issues/2286).
+This is currently impossible on modern versions of Firefox (https://github.com/mozilla-mobile/fenix/issues/2286).  On older versions the installation procedure is the same as Chrome (Android).
 
 ## 3. Create more certificates (optional)
 

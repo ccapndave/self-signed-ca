@@ -19,7 +19,7 @@ mkdir -p $TARGET_DIR
 
 # Create a key and a CA for our organisation and put them in a folder
 mkdir $TARGET_DIR
-openssl req -config openssl.cnf -x509 -nodes -days 825 -newkey rsa:2048 -reqexts v3_req -extensions v3_ca -subj "/CN=$ORGANISATION CA/O=Self Signed CA/C=CH" -keyout ${TARGET_DIR}/ca.key -out ${TARGET_DIR}/ca.crt
+openssl req -config ./lib/openssl.cnf -x509 -nodes -days 825 -newkey rsa:2048 -reqexts v3_req -extensions v3_ca -subj "/CN=$ORGANISATION CA/O=Self Signed CA/C=CH" -keyout ${TARGET_DIR}/ca.key -out ${TARGET_DIR}/ca.crt
 
 # Create a bash script for generating certificates
 SCRIPT=${TARGET_DIR}/generate_certificate.sh
@@ -41,6 +41,10 @@ echo "openssl req -passin pass:$PASSWORD -new -key \$CERTIFICATE_NAME.key -subj 
 echo "openssl x509 -req -passin pass:$PASSWORD -in \$CERTIFICATE_NAME.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out \$CERTIFICATE_NAME.crt -days 825 -sha256 -extfile <(printf \"subjectAltName=\$SERVERS\")" >> $SCRIPT
 
 chmod +x ${TARGET_DIR}/generate_certificate.sh
+
+# Copy the serve_ca script
+cp ./lib/serve_ca.sh $TARGET_DIR/
+chmod +x $TARGET_DIR/serve_ca.sh
 
 # Run the certificate generation script at once.
 cd $TARGET_DIR && $SCRIPT

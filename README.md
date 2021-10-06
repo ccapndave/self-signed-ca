@@ -1,6 +1,6 @@
 # About
 
-This utility generates certificates who want to test their local sites using `https` (very useful for web development where browsers disable various features under `http`).
+This utility generates certificates for those who want to test their local sites using `https` (very useful for web development where browsers disable various features under `http`).
 
 # Disclaimer
 
